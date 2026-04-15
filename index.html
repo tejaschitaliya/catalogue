@@ -1,69 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shubh Arts Studios</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubh Arts Studios Catalogue</title>
 
-  <style>
-    body {
-      font-family: Arial;
-      background: #f9f9f9;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-    }
-    .card {
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    button {
-      margin-top: 8px;
-      padding: 8px;
-      width: 100%;
-      background: green;
-      color: white;
-      border: none;
-      border-radius: 6px;
-    }
-  </style>
+<style>
+body { font-family: Arial; margin:0; background:#f5f5f5; }
+header { text-align:center; padding:30px; background:#222; color:#fff; }
+.filter-bar { text-align:center; padding:10px; background:#333; }
+.filter-btn { margin:5px; padding:8px 12px; border:none; cursor:pointer; color:#fff; background:#555; }
+.filter-btn.active { background:#C9933A; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; padding:20px; }
+.card { background:#fff; border-radius:6px; overflow:hidden; }
+.card img { width:100%; height:180px; object-fit:cover; }
+.card-body { padding:10px; }
+.hidden { display:none; }
+</style>
+
 </head>
-
 <body>
 
+<header>
 <h1>Shubh Arts Studios</h1>
+<p>Digital Interactive Catalogue</p>
+</header>
 
-<div class="grid">
+<div class="filter-bar">
+<button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+<button class="filter-btn" onclick="filterProducts('toran', this)">Toran</button>
+<button class="filter-btn" onclick="filterProducts('diya', this)">Diya</button>
+<button class="filter-btn" onclick="filterProducts('thali', this)">Thali</button>
+</div>
 
-  <div class="card">
-    <img src="images/T162.jpg">
-    <p>T162 Toran</p>
-    <button onclick="order('T162')">Order</button>
-  </div>
+<div class="grid" id="productGrid">
 
-  <div class="card">
-    <img src="images/T161.jpg">
-    <p>T161 Toran</p>
-    <button onclick="order('T161')">Order</button>
-  </div>
+<div class="card" data-cat="toran">
+<img src="images/T162.jpg">
+<div class="card-body">
+<h3>T162 - Peacock Splendour</h3>
+</div>
+</div>
+
+<div class="card" data-cat="toran">
+<img src="images/T161.jpg">
+<div class="card-body">
+<h3>T161 - Green Parrot Toran</h3>
+</div>
+</div>
+
+<div class="card" data-cat="toran">
+<img src="images/T160.jpg">
+<div class="card-body">
+<h3>T160 - Mirror Medallion</h3>
+</div>
+</div>
+
+<div class="card" data-cat="toran">
+<img src="images/T159.jpg">
+<div class="card-body">
+<h3>T159 - Pastel Blossom</h3>
+</div>
+</div>
+
+<div class="card" data-cat="toran">
+<img src="images/T158.jpg">
+<div class="card-body">
+<h3>T158 - Peach Peony</h3>
+</div>
+</div>
+
+<div class="card" data-cat="toran">
+<img src="images/T157.jpg">
+<div class="card-body">
+<h3>T157 - Krishna Toran</h3>
+</div>
+</div>
 
 </div>
 
 <script>
-function order(code){
-  window.open("https://wa.me/65XXXXXXXX?text=I want " + code);
+function filterProducts(category, btn){
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    if(category === "all" || card.dataset.cat === category){
+      card.classList.remove("hidden");
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
 }
 </script>
 
