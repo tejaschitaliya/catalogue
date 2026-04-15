@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shubh Arts Studios</title>
 
+  <style>
+    body {
+      font-family: Arial;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 8px;
+      padding: 8px;
+      width: 100%;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Shubh Arts Studios</h1>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="images/T162.jpg">
+    <p>T162 Toran</p>
+    <button onclick="order('T162')">Order</button>
+  </div>
+
+  <div class="card">
+    <img src="images/T161.jpg">
+    <p>T161 Toran</p>
+    <button onclick="order('T161')">Order</button>
+  </div>
+
+</div>
+
+<script>
+function order(code){
+  window.open("https://wa.me/65XXXXXXXX?text=I want " + code);
+}
+</script>
+
+</body>
+</html>
